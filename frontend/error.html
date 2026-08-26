@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>403 Forbidden</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      color: #262626;
+    }
+    .error-container {
+      text-align: center;
+      max-width: 500px;
+      padding: 40px 30px;
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      border-radius: 4px;
+    }
+    .error-code {
+      font-size: 72px;
+      font-weight: 700;
+      color: #ed4956;
+      margin-bottom: 10px;
+      letter-spacing: -2px;
+    }
+    .error-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1c1c1e;
+    }
+    .error-desc {
+      font-size: 16px;
+      color: #737373;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .error-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      background: #0095f6;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .error-btn:hover {
+      background: #1877f2;
+    }
+    .error-icon {
+      font-size: 60px;
+      color: #ed4956;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <div class="error-icon">🔒</div>
+    <div class="error-code">403</div>
+    <div class="error-title">Forbidden</div>
+    <div class="error-desc">
+      You don't have permission to access this resource.<br />
+      Please check your credentials and try again.
+    </div>
+    <a href="/" class="error-btn">Go Back</a>
+  </div>
+</body>
+</html>
